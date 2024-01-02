@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intodo/src/persentation/routes/routes.dart';
 import 'package:intodo/src/persentation/screen/auth/splash_screen.dart';
+import 'package:intodo/src/persentation/screen/home/home_screen.dart';
 
 import 'src/values/constants/themes.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         Routes.splashScreen: (context) => const SplashScreen(),
+        Routes.homeScreen: (context) => const HomeScreen(),
       },
     );
   }
