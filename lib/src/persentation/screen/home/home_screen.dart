@@ -8,6 +8,92 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: SafeArea(
+        child: ListView(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.menu,
+                          size: 25,
+                          color: AppColors.textColor,
+                        ),
+                      ),
+                      Expanded(
+                        child: TextField(
+                          cursorColor: AppColors.textColor,
+                          keyboardType: TextInputType.text,
+                          textInputAction: TextInputAction.go,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding:
+                                EdgeInsets.symmetric(horizontal: 15),
+                            hintText: "Search...",
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.grid_view,
+                          size: 25,
+                          color: AppColors.textColor,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: CircleAvatar(
+                          radius: 15,
+                          backgroundColor: AppColors.textColor,
+                          child: Text(
+                            'JM',
+                            style: AppTextStyles.whiteTextStyle.copyWith(
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            ListView.builder(
+              itemCount: 50,
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Card(
+                    color: AppColors.lightBackgroundColor,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: AppColors.primaryColor),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text("Hello World! - $index"),
+                    ),
+                  ),
+                );
+              },
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
         padding: EdgeInsets.zero,
         shape: const AutomaticNotchedShape(

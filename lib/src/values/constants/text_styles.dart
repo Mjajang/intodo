@@ -7,9 +7,9 @@ class AppTextStyles {
   static TextStyle blackTextStyle =
       GoogleFonts.poppins(color: AppColors.textColor);
   static TextStyle whiteTextStyle =
-      GoogleFonts.poppins(color: AppColors.accentColor);
+      GoogleFonts.poppins(color: AppColors.primaryColor);
   static TextStyle darkBlackTextStyle =
       GoogleFonts.poppins(color: AppColors.darkTextColor);
   static TextStyle darkWhiteTextStyle =
-      GoogleFonts.poppins(color: AppColors.darkAccentColor);
+      GoogleFonts.poppins(color: AppColors.darkPrimaryColor);
 }
