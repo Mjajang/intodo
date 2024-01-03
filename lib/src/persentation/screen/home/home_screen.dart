@@ -6,13 +6,18 @@ import 'package:intodo/src/values/constants/constants.dart';
 
 import 'widgets/build_grid_view.dart';
 import 'widgets/build_list_view.dart';
+import 'widgets/custom_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: CustomDrawer(),
       body: SafeArea(
         child: ListView(
           children: [
@@ -28,7 +33,9 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _scaffoldKey.currentState?.openDrawer();
+                        },
                         icon: Icon(
                           Icons.menu,
                           size: 25,
