@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intodo/src/persentation/blocs/view_home/view_home_cubit.dart';
 import 'package:intodo/src/persentation/screen/home/widgets/custom_location_fab.dart';
 import 'package:intodo/src/values/constants/constants.dart';
 
+import 'widgets/build_grid_view.dart';
+import 'widgets/build_list_view.dart';
+
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +49,19 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.grid_view,
-                          size: 25,
-                          color: AppColors.textColor,
+                        onPressed: () {
+                          context.read<ViewHomeCubit>().toogleView();
+                        },
+                        icon: BlocBuilder<ViewHomeCubit, ViewHome>(
+                          builder: (context, state) {
+                            return Icon(
+                              state == ViewHome.grid
+                                  ? Icons.grid_view
+                                  : Icons.view_agenda_outlined,
+                              size: 25,
+                              color: AppColors.textColor,
+                            );
+                          },
                         ),
                       ),
                       Padding(
@@ -69,28 +82,14 @@ class HomeScreen extends StatelessWidget {
                 )
               ],
             ),
-            ListView.builder(
-              itemCount: 50,
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
+            BlocBuilder<ViewHomeCubit, ViewHome>(
+              builder: (context, state) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Card(
-                    color: AppColors.lightBackgroundColor,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: AppColors.primaryColor),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Text("Hello World! - $index"),
-                    ),
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: viewOptions[state.index],
                 );
               },
-            )
+            ),
           ],
         ),
       ),
@@ -173,4 +172,9 @@ class HomeScreen extends StatelessWidget {
       floatingActionButtonLocation: const CustomFloatingActionButtonLocation(),
     );
   }
+
+  final List<Widget> viewOptions = [
+    const BuildGridView(),
+    const BuildListView(),
+  ];
 }
