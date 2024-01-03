@@ -5,6 +5,7 @@ import 'package:intodo/src/persentation/blocs/view_home/view_home_cubit.dart';
 import 'package:intodo/src/persentation/routes/routes.dart';
 import 'package:intodo/src/persentation/screen/auth/splash_screen.dart';
 import 'package:intodo/src/persentation/screen/home/home_screen.dart';
+import 'package:intodo/src/persentation/screen/note/note_screen.dart';
 
 import 'src/values/constants/themes.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         routes: {
           Routes.splashScreen: (context) => const SplashScreen(),
           Routes.homeScreen: (context) => HomeScreen(),
+          Routes.noteScreen: (context) => const NoteScreen(),
         },
       ),
     );

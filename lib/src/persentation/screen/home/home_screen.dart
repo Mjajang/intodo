@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intodo/src/persentation/blocs/view_home/view_home_cubit.dart';
+import 'package:intodo/src/persentation/routes/routes.dart';
 import 'package:intodo/src/persentation/screen/home/widgets/custom_location_fab.dart';
 import 'package:intodo/src/values/constants/constants.dart';
 
@@ -165,7 +166,9 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
           isExtended: true,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, Routes.noteScreen);
+          },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
